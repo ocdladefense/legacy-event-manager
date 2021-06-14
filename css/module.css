@@ -1,0 +1,89 @@
+#user-cart {
+	display:none;
+}	
+.container {
+	display:block;
+	background-color:#fff;
+	position:relative;
+	overflow-x:hidden;
+}
+
+.picker {
+	min-height:300px;
+	position:relative;
+}
+
+.dinner-menu {
+	margin-bottom:30px;
+}
+.dinner-menu-item {
+	display:block;
+}
+
+
+#app-status {
+	position:fixed;
+	left:0px;
+	top:0px;
+	padding:15px;
+	background-color:green;
+	color:#fff;
+	border-radius: 3px;
+	display:none;
+	z-index:105;
+	width:100%;
+}
+
+#app-status.loading {
+	display:block;
+}
+
+.form-item input,
+.form-item select {
+	display:block;
+	padding:3px;
+	width:90%;
+	font-size:1.3em;
+}
+
+.registration {
+	margin-top:25px;
+}
+
+fieldset {
+	position:relative;
+}
+
+
+@media screen and (min-width:800px) {
+	.dinner-menu-item {
+		display:inline-block;
+		border: 1px solid #999;
+		padding:5px;
+		max-width:28%;
+		margin-right:8px;
+	}
+	.container {
+		padding-left:5%;
+		padding-right:5%;
+		padding-top:2%;
+		padding-bottom:2%;
+	}
+	.registration {
+		margin-top:0px;
+	}
+	.form-item {
+		display:inline-block;
+	}
+	.form-item input,
+	.form-item select {
+		display:inline;
+		padding:3px;
+		font-size:1.0em;
+	}
+	#app-status {
+		position:absolute;
+		left:auto;
+		right:0px;
+	}
+}
