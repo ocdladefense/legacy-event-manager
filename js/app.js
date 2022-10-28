@@ -32,8 +32,8 @@ globalScripts(["require","libEvent","libData","all/modules/cart/js/cart",
 
    
 	function domAction(action,id){
-		 var domFirst = document.getElementById("first-name-"+id).value;
-		 var domLast = document.getElementById("last-name-"+id).value;
+		 var domFirst = document.getElementById("firstname-"+id).value;
+		 var domLast = document.getElementById("lastname-"+id).value;
 		 var select = document.getElementById("meal-"+id);
 		 var domMeal = select.options[select.selectedIndex].value;
  
