@@ -12,11 +12,26 @@
 	min-height:300px;
 	position:relative;
 }
+.meal-type {
+	font-weight:bold;
+	display:block;
+}
 
-.dinner-menu {
+.meal-title {
+	display:block;
+	font-style:italic;
+}
+
+.meal-menu-item span {
+	margin:4px;
+	margin-left: 0px;
+}
+
+
+.meal-menu {
 	margin-bottom:30px;
 }
-.dinner-menu-item {
+.meal-menu-item {
 	display:block;
 }
 
@@ -56,12 +71,16 @@ fieldset {
 
 
 @media screen and (min-width:800px) {
-	.dinner-menu-item {
+
+
+	.meal-menu-item {
 		display:inline-block;
 		border: 1px solid #999;
-		padding:5px;
+		padding:10px;
 		max-width:28%;
 		margin-right:8px;
+		min-height: 125px;
+		vertical-align: middle;
 	}
 	.container {
 		padding-left:5%;
@@ -86,4 +105,13 @@ fieldset {
 		left:auto;
 		right:0px;
 	}
+
+	.form-item {
+		min-width: 250px;
+	}
+}
+
+
+.event-meal .form-item {
+	vertical-align: top;
 }
