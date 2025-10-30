@@ -45,7 +45,7 @@
 	color:#fff;
 	border-radius: 3px;
 	display:none;
-	z-index:105;
+	z-index:999;
 	width:100%;
 }
 
@@ -91,7 +91,7 @@ fieldset {
 	.registration {
 		margin-top:0px;
 	}
-	.form-item {
+	.form-item, .form-item-group{
 		display:inline-block;
 	}
 	.form-item input,
@@ -100,13 +100,9 @@ fieldset {
 		padding:3px;
 		font-size:1.0em;
 	}
-	#app-status {
-		position:absolute;
-		left:auto;
-		right:0px;
-	}
 
-	.form-item {
+
+	.form-item, .form-item-group {
 		min-width: 250px;
 	}
 }

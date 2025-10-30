@@ -24,56 +24,35 @@ globalScripts(["require","libEvent","libData","all/modules/cart/js/cart",
 	var listen = function listen(e) {
 		console.log("change event");
 
-		/*
-		var target = e.target;
-		var data = e.target.dataset || null;
-		if(!target.id) return false;
-		var id = target.id.split('-')[1];
-		*/
-		domAction("save",e.registrationId);
+		let form = e.target.form;
+		let registrationId = form && form.id;
+		let registrationType = form.elements['registration-type'] && form.elements['registration-type'].value;
+
+		domAction("save", registrationId);
 	};	
 
    
 	function domAction(action,id){
-		 /*
-		 var domFirst = document.getElementById("firstname-"+id).value;
-		 var domLast = document.getElementById("lastname-"+id).value;
-		 var select = document.getElementById("meal-"+id);
-		 var domMeal = select.options[select.selectedIndex].value;
-		*/
-		let form = new FormData(document.getElementById(id));
-		let obj = {};
-		for (let [key, value] of form) {
-			obj[key] = value;
+
+		let formElem = document.getElementById(id);
+		let formData = new FormData(formElem);
+		let data = {};
+		for (let [key, value] of formData.entries()) {
+			if('' != value) data[key] = value;
 		}
 
-		// obj[Meal2Notes__c] = foo;
-		// obj[MealNotes__c] = foo;
-		// obj[Meal2__c] = foo;
-		/*
-		Id: "a2705000000LYOIAA4"
-		firstname: "Jose"
-		lastname: "Bernal"
-		meal-Friday-Lunch: "Turkey"
-		meal-Saturday-Lunch: "none"
-		meal-notes-Friday-Lunch: ""
-		meal-notes-Saturday-Lunch: ""
-		*/
-		console.log(obj);
-		let data = {
-			Id: obj.Id,
-			FirstName__c: obj.FirstName__c,
-			LastName__c: obj.LastName__c,
-			Meal__c: obj['meal-Friday-Lunch'],
-			Meal2__c: obj['meal-Saturday-Lunch'],
-			MealNotes__c: obj['meal-notes-Friday-Lunch'],
-			Meal2Notes__c: obj['meal-notes-Saturday-Lunch']
-		};
-
 		console.log(data);
+
+		function updateForm(result) {
+			formElem.id = result.Id;
+			formElem.dataset.registrationId = result.Id;
+			formElem.setAttribute('id', result.Id);
+			formElem.setAttribute('data-registration-id', result.Id);
+			formElem.elements['Id'].value = result.Id;
+		}
 		
  		ui.loading();
-		save(data).then(function(){ui.status('Saved.');}).then(ui.delay(ui.complete,1000));
+		save(data).then(updateForm).then(function(){ui.status('Saved.');}).then(ui.delay(ui.complete,1000));
 	}
    
    
